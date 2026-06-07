@@ -1,0 +1,71 @@
+.green {
+    background-color: #003726;
+}
+
+ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+
+nav .h-full .relative,
+nav .h-full .relative > div,
+nav .h-full .relative > div > a {
+    height: 100%;
+}
+
+/*nav .h-full div {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+
+.owl-nav {
+    width: 100%;
+    padding: 0 20px;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: calc(50% - 30px);
+    transform: translateY(-50%);
+}
+
+.owl-nav > button > span {
+    font-size: 100px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+.owl-dots {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    padding-left: 20px;
+    position: absolute;
+    bottom: 50px;
+}
+
+.owl-dots > button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: gray !important;
+    margin: 0 2px;
+}
+
+.owl-dots > button.active {
+    background-color: white !important;
+}
+
+@media (max-width: 1280px) {
+    .owl-carousel.slider {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .owl-nav {
+        width: calc(100% - 40px);
+    }
+
+    .owl-nav > button > span {
+        font-size: 50px;
+    }
+}
