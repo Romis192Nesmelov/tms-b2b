@@ -9,8 +9,6 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/css/jquery.fancybox.min.css',
-                'resources/css/icons/fontawesome/styles.min.css',
-                'resources/css/icons/icomoon/styles.css',
                 'resources/css/main.css',
                 'resources/js/app.js',
                 'resources/js/owl.carousel.js',
