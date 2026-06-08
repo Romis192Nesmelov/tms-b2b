@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Slide;
+use App\Models\Chapter;
 use Illuminate\View\View;
 
 class HomeController extends BaseController
@@ -16,6 +17,7 @@ class HomeController extends BaseController
             'breadcrumbs' => [],
             'nav_links' => $this->mainMenu,
             'slides' => Slide::query()->where('active',1)->get(),
+            'chapters' => Chapter::query()->where('active',1)->get(),
             'contents' => '',
         ]);
     }

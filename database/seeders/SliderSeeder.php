@@ -13,31 +13,11 @@ class SliderSeeder extends Seeder
      */
     public function run()
     {
-        $data = [
-            [
-                'image' => 'images/slider/slide1.jpg',
-                'active' => 1,
-            ],
-            [
-                'image' => 'images/slider/slide2.jpg',
-                'active' => 1,
-            ],
-            [
-                'image' => 'images/slider/slide3.jpg',
-                'active' => 1,
-            ],
-            [
-                'image' => 'images/slider/slide4.jpg',
-                'active' => 1,
-            ],
-            [
-                'image' => 'images/slider/slide5.jpg',
-                'active' => 1,
-            ],
-        ];
-
-        foreach ($data as $user) {
-            Slide::query()->create($user);
+        for ($i=1;$i<=5;$i++) {
+            Slide::query()->create([
+                'image' => 'storage/images/slider/slide'.$i.'.jpg',
+                'active' => 1
+            ]);
         }
     }
 }

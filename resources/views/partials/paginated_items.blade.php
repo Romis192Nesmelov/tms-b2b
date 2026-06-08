@@ -7,10 +7,10 @@
             <div class="w-full">
                 @if (isset($item->date))
                     <div class="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-end mb-4">
-                        <div class="text-base text-gray-500">{{ carbonDate($item->date) }}</div>
+                        <div class="text-base text-neutral-500">{{ carbonDate($item->date) }}</div>
                     </div>
                 @endif
-                <div class="text-gray-400 text-base">{!! $item->text !!}</div>
+                <div class="text-neutral-400 text-base">{!! $item->text !!}</div>
             </div>
         </div>
         <hr class="opacity-25">
