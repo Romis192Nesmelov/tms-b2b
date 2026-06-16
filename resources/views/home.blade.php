@@ -44,7 +44,7 @@
 
     <x-gray-part>
         @include('partials.head1',['head' => 'Новости'])
-        <div id="home-news" class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="owl-carousel news">
             @each('partials.boxes', $news, 'item')
         </div>
         <div class="max-w-7xl mx-auto pt-6 text-center">

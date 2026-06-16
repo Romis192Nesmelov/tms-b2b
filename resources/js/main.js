@@ -32,6 +32,27 @@ $(document).ready(function() {
         },
         // navText:[navButtonBlack1,navButtonBlack2]
     });
+
+    $('.owl-carousel.news').owlCarousel({
+        margin: 50,
+        loop: true,
+        nav: false,
+        autoplay: true,
+        autoplayTimeout: 7000,
+        dots: false,
+        responsive: {
+            400: {
+                items: 2
+            },
+            768: {
+                items: 2
+            },
+            1200: {
+                items: 4
+            },
+        },
+        // navText:[navButtonBlack1,navButtonBlack2]
+    });
 });
 
 // const getQueryParams = (qs) => {

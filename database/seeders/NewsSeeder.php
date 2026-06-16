@@ -13,9 +13,9 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1;$i<=10;$i++) {
+        for ($i=1;$i<=4;$i++) {
             News::query()->create([
-                'image' => 'storage/images/news/news.jpg',
+                'image' => 'storage/images/news/news'.$i.'.jpg',
                 'title' => 'Новость '.$i,
                 'description' => 'Nam consectetur ullamcorper quam, quis porttitor quam posuere at. Curabitur.',
                 'active' => 1
