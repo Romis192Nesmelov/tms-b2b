@@ -11,7 +11,6 @@ export default defineConfig({
                 'resources/css/owl.carousel.min.css',
                 'resources/css/jquery.fancybox.min.css',
                 'resources/css/main.css',
-                'resources/js/app.js',
                 'resources/js/owl.carousel.js',
                 'resources/js/jquery.fancybox.min.js',
                 'resources/js/main.js'

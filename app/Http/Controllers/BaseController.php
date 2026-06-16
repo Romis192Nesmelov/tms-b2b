@@ -12,7 +12,8 @@ class BaseController extends Controller
             'about'         => __('About company'),
             'production'    => __('Contract production'),
             'delivery'      => __('Delivery and payment'),
-			'catalogue'     => __('Каталог')
+			'catalogue'     => __('Catalogue'),
+            'news'     => __('News')
         ];
     }
 }

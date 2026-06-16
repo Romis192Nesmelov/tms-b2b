@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css"/>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.3.js"
-            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js" type="text/javascript"></script>
 
@@ -28,7 +27,6 @@
         'resources/css/owl.carousel.min.css',
         'resources/css/jquery.fancybox.min.css',
         'resources/css/main.css',
-        'resources/js/app.js',
         'resources/js/owl.carousel.js',
         'resources/js/jquery.fancybox.min.js',
         'resources/js/main.js'
