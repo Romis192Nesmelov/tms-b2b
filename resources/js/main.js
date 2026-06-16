@@ -36,13 +36,13 @@ $(document).ready(function() {
     $('.owl-carousel.news').owlCarousel({
         margin: 50,
         loop: true,
-        nav: false,
+        nav: true,
         autoplay: true,
         autoplayTimeout: 7000,
         dots: false,
         responsive: {
             400: {
-                items: 2
+                items: 1
             },
             768: {
                 items: 2
