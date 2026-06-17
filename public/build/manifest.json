@@ -52,7 +52,7 @@
     "src": "_instrument-sans-600-normal-DMks36a2.woff"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CJm7CJJ7.css",
+    "file": "assets/app-CHy-sUBK.css",
     "name": "app",
     "names": [
       "app.css"
@@ -70,7 +70,7 @@
     "isEntry": true
   },
   "resources/css/main.css": {
-    "file": "assets/main-CD-NeLR4.css",
+    "file": "assets/main-BRyYe6Be.css",
     "name": "main",
     "names": [
       "main.css"
@@ -87,6 +87,12 @@
     "src": "resources/css/owl.carousel.min.css",
     "isEntry": true
   },
+  "resources/js/jquery.easing.js": {
+    "file": "assets/jquery.easing-CgdHI1a9.js",
+    "name": "jquery.easing",
+    "src": "resources/js/jquery.easing.js",
+    "isEntry": true
+  },
   "resources/js/jquery.fancybox.min.js": {
     "file": "assets/jquery.fancybox.min-S72oKFjN.js",
     "name": "jquery.fancybox.min",
@@ -94,7 +100,7 @@
     "isEntry": true
   },
   "resources/js/main.js": {
-    "file": "assets/main-BLWoPJUd.js",
+    "file": "assets/main-DkZz-4Aj.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true

@@ -10,14 +10,14 @@
     @include('partials.favicons')
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css"/>
+{{--    <link rel="preconnect" href="https://fonts.bunny.net">--}}
+{{--    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap"/>--}}
+{{--    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css"/>--}}
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js" type="text/javascript"></script>
+{{--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript"></script>--}}
+{{--    <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js" type="text/javascript"></script>--}}
 
     {{--        <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript"></script>--}}
     {{--        <script src="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/js/pagedone.js"></script>--}}
@@ -29,30 +29,33 @@
         'resources/css/main.css',
         'resources/js/owl.carousel.js',
         'resources/js/jquery.fancybox.min.js',
+        'resources/js/jquery.easing.js',
         'resources/js/main.js'
     ])
 </head>
 <body class="font-sans antialiased bg-neutral-950">
-<div class="bg-green">
+
+<div class="bg-green" data-scroll="top">
     <div class="max-w-7xl mx-auto py-5">
         <div class="flex flex-col md:flex-row items-center justify-between">
             <div class="flex flex-col md:flex-row items-center justify-center">
                 <a class="hover:opacity-50" href="{{ route('home') }}">
                     <img class="w-25 ml-0 mr-0 md:ml-4 md:mr-3 mt-3 md:mt-0" src="{{ asset('storage/images/logo.svg') }}"/>
                 </a>
-                <p class="text-center md:text-left text-2xl leading-6 text-white font-semibold px-2 pt-3 md:pt-0">производство<br>монтажного профиля</p>
+                <p class="text-center md:text-left text-2xl leading-6 text-white font-semibold px-2 pt-3 md:pt-0">{{ trans('content.production_of') }}<br>{{ trans('content.the_mounting_profile') }}</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 md:gap-6 px-6 py-5 md:py-0">
                 @include('partials.contacts.contacts')
             </div>
             <div class="px-2">
                 <form>
-                    <x-text-input icon="search_icon.svg" placeholder="Поиск"></x-text-input>
+                    <x-text-input icon="search_icon.svg" placeholder="{{ __('Search') }}"></x-text-input>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 <div class="bg-green-middle">
     {{ $main_nav }}
     <!-- Page Heading -->
@@ -81,6 +84,8 @@
         </div>
     </div>
 </footer>
+
+<img id="on_top_button" class="hover:opacity-50" src="{{ asset('storage/images/ontop_icon.svg') }}" />
 
 {{--        <x-modal name="our-mission" focusable>--}}
 {{--        </x-modal>--}}

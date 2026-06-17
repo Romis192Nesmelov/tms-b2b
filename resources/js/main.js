@@ -1,4 +1,11 @@
 $(document).ready(function() {
+    let onTopButton = $('#on_top_button');
+
+    onTopButton.click(()=> {
+        goToScroll('top');
+        // $(window).scrollTop(0);
+    });
+
     $('.fancybox').fancybox({
         'autoScale': true,
         'touch': false,
@@ -53,7 +60,22 @@ $(document).ready(function() {
         },
         // navText:[navButtonBlack1,navButtonBlack2]
     });
+
+    $(window).scroll(function() {
+        let win = $(this);
+
+        if (win.scrollTop() > win.outerHeight()) onTopButton.fadeIn();
+        else onTopButton.fadeOut();
+    });
 });
+
+const goToScroll = (scrollData) => {
+    $('html,body').animate({
+        scrollTop: $('div[data-scroll=' + scrollData + ']').offset().top
+    }, 1000, 'easeInOutQuint', function () {
+        // window.scrollFlag = false;
+    });
+}
 
 // const getQueryParams = (qs) => {
 //     qs = qs.split('+').join(' ');

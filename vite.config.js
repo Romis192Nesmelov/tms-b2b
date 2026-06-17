@@ -13,6 +13,7 @@ export default defineConfig({
                 'resources/css/main.css',
                 'resources/js/owl.carousel.js',
                 'resources/js/jquery.fancybox.min.js',
+                'resources/js/jquery.easing.js',
                 'resources/js/main.js'
             ],
             refresh: true,
