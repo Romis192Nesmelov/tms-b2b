@@ -45,7 +45,7 @@
     </x-gray-part>
 
     <div class="max-w-7xl mx-auto py-6 px-3">
-        <div class="w-full rounded-xl overflow-hidden">
+        <div class="w-full rounded-xl overflow-hidden border-3 border-solid border-green-800">
             <video id="main-video" autoplay="autoplay" preload="auto" muted="muted" loop="loop" controls poster="{{ asset('storage/video/poster.jpg') }}">
                 <source src="{{ asset('storage/video/video.mp4') }}">
             </video>
