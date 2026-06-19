@@ -15,7 +15,7 @@ class SliderSeeder extends Seeder
     {
         for ($i=1;$i<=5;$i++) {
             Slide::query()->create([
-                'image' => 'storage/images/slider/slide'.$i.'.jpg',
+                'image' => 'slide'.$i.'.jpg',
                 'active' => 1
             ]);
         }

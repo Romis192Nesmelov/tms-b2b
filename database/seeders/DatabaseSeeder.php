@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
 //            'name' => 'Test User',
 //            'email' => 'test@example.com',
 //        ]);
+        $this->call(MoonshineUserSeeder::class);
         $this->call(SliderSeeder::class);
         $this->call(ChapterSeeder::class);
         $this->call(AdvantagesSeeder::class);

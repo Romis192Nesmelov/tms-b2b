@@ -1,10 +1,14 @@
 {
-     "Home": "Главная",
+    "Home": "Главная",
     "Search": "Поиск",
+    "Slides": "Слайды",
     "About company": "О компании",
     "Contract production": "Контрактное производство ",
     "Delivery and payment": "Доставка и оплата",
+    "Active": "Активно",
     "Catalogue": "Каталог",
+    "Chapters": "Разделы",
+    "Advantages": "Преимущества",
     "News": "Новости",
     "All news": "Все новости",
     "Documents": "Документы",
@@ -12,5 +16,10 @@
     "Cancel": "Отмена",
     "Details": "Подробнее",
     "Submit a production request": "Оставить заявку на производство",
-    "Let submit your application": "Оставьте вашу заявку!"
+    "Let submit your application": "Оставьте вашу заявку!",
+    "Image": "Картинка",
+    "Title": "Загловок",
+    "Text": "Текст",
+    "Description": "Описание",
+    "©TMS «Mounting Systems»": "©ТМС «Монтажные Системы»"
 }

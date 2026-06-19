@@ -15,7 +15,7 @@ class ChapterSeeder extends Seeder
     {
         for ($i=1;$i<=6;$i++) {
             Chapter::query()->create([
-                'image' => 'storage/images/catalogue/chapter'.$i.'.jpg',
+                'image' => 'chapter'.$i.'.jpg',
                 'title' => 'Раздел '.$i,
                 'active' => 1
             ]);
