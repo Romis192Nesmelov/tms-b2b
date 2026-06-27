@@ -10,7 +10,7 @@
 
         @include('partials.head1',['head' => $content->title])
         <div class="flex flex-col md:flex-row items-start justify-center p-4">
-            <img class="w-full md:w-75 mr-6" src="{{ asset('storage/images/content'.$content->image) }}" />
+            <img class="w-full md:w-75 mr-6" src="{{ asset('storage/images/content/'.$content->image) }}" />
             <div class="text-neutral-300">
                 {!! $content->text !!}
             </div>
