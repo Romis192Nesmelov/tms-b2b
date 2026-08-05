@@ -12,9 +12,10 @@ use MoonShine\Contracts\ColorManager\PaletteContract;
 use App\MoonShine\Resources\Content\ContentResource;
 use MoonShine\MenuManager\MenuItem;
 use App\MoonShine\Resources\Advantages\AdvantagesResource;
-use App\MoonShine\Resources\Chapters\ChaptersResource;
+use App\MoonShine\Resources\Product\ProductResource;
 use App\MoonShine\Resources\News\NewsResource;
-use App\MoonShine\Resources\Slides\SlidesResource;
+use App\MoonShine\Resources\Slide\SlideResource;
+use App\MoonShine\Resources\Image\ImageResource;
 
 final class MoonShineLayout extends AppLayout
 {
@@ -34,11 +35,12 @@ final class MoonShineLayout extends AppLayout
     {
         return [
             ...parent::menu(),
-            MenuItem::make(SlidesResource::class, __('Slides')),
+            MenuItem::make(SlideResource::class, __('Slides')),
             MenuItem::make(ContentResource::class, __('Content')),
             MenuItem::make(AdvantagesResource::class, __('Advantages')),
-            MenuItem::make(ChaptersResource::class, __('Chapters')),
+            MenuItem::make(ProductResource::class, __('Products')),
             MenuItem::make(NewsResource::class, __('News')),
+            MenuItem::make(ImageResource::class, __('Images')),
         ];
     }
 
@@ -53,6 +55,6 @@ final class MoonShineLayout extends AppLayout
     }
 
     protected function getFooterCopyright(): string {
-        return __('©TMS «Mounting Systems»');
+        return __('©STRUT-consoles');
     }
 }

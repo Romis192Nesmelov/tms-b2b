@@ -9,11 +9,9 @@ class BaseController extends Controller
     public function __construct()
     {
         $this->mainMenu = [
-            'about'         => __('About company'),
-            'production'    => __('Contract production'),
-            'delivery'      => __('Delivery and payment'),
-			'catalogue'     => __('Catalogue'),
-            'news'          => __('News')
+            'home'     => __('Home'),
+            'catalogue'     => __('Catalogue'),
+//            'news'          => __('News')
         ];
     }
 }

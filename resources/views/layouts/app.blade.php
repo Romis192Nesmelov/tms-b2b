@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'ТМС b2b') }}</title>
+    <title>{{ config('app.name', 'STRUT profile.ru') }}</title>
 
     @include('partials.favicons')
 
@@ -38,13 +38,13 @@
 <div class="bg-green" data-scroll="top">
     <div class="max-w-7xl mx-auto py-5">
         <div class="flex flex-col md:flex-row items-center justify-between">
-            <div class="flex flex-col md:flex-row items-center justify-center">
+            <div class="flex flex-col md:flex-row items-start justify-start">
                 <a class="hover:opacity-50" href="{{ route('home') }}">
-                    <img class="w-25 ml-0 mr-0 md:ml-4 md:mr-3 mt-3 md:mt-0" src="{{ asset('storage/images/logo.svg') }}"/>
+                    <img class="w-50 ml-0 mr-0 md:ml-4 md:mr-2 mt-3 md:mt-0" src="{{ asset('storage/images/logo.svg') }}"/>
                 </a>
-                <p class="text-center md:text-left text-2xl leading-6 text-white font-semibold px-2 pt-3 md:pt-0">{{ trans('content.production_of') }}<br>{{ trans('content.the_mounting_profile') }}</p>
+                <p class="text-center md:text-left text-2xl leading-6 text-white font-semibold px-2 pt-3 md:pt-0">{{ trans('content.production_of') }}<br>{{ trans('content.the_mounting') }}<br>{{ trans('content.profile') }}</p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 md:gap-6 px-6 py-5 md:py-0">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 md:gap-4 px-6 py-5 md:py-0">
                 @include('partials.contacts.contacts')
             </div>
             <div class="px-2">

@@ -15,9 +15,9 @@
                 {!! $content->text !!}
             </div>
         </div>
-        <div class="w-full my-4 text-center">
-            <x-secondary-button class="w-50 text-center">{{ __('Details') }}</x-secondary-button>
-        </div>
+{{--        <div class="w-full my-4 text-center">--}}
+{{--            <x-secondary-button class="w-50 text-center">{{ __('Details') }}</x-secondary-button>--}}
+{{--        </div>--}}
     </div>
 
     <x-gray-part>
@@ -29,8 +29,8 @@
 
     <div class="max-w-7xl mx-auto py-6 px-3">
         @include('partials.head1',['head' => __('Catalogue')])
-        <div class="grid grid-cols-2 lg:grid-cols-6 gap-3">
-            @each('partials.boxes', $chapters, 'item')
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
+            @each('partials.boxes', $products, 'item')
         </div>
     </div>
 

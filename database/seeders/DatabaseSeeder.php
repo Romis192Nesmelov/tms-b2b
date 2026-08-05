@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 //        ]);
         $this->call(MoonshineUserSeeder::class);
         $this->call(SliderSeeder::class);
-        $this->call(ChapterSeeder::class);
+        $this->call(ProductSeeder::class);
         $this->call(AdvantagesSeeder::class);
         $this->call(ContentSeeder::class);
         $this->call(NewsSeeder::class);

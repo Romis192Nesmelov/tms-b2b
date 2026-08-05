@@ -12,9 +12,10 @@ use App\MoonShine\Resources\MoonShineUser\MoonShineUserResource;
 use App\MoonShine\Resources\MoonShineUserRole\MoonShineUserRoleResource;
 use App\MoonShine\Resources\Content\ContentResource;
 use App\MoonShine\Resources\Advantages\AdvantagesResource;
-use App\MoonShine\Resources\Chapters\ChaptersResource;
+use App\MoonShine\Resources\Product\ProductResource;
 use App\MoonShine\Resources\News\NewsResource;
-use App\MoonShine\Resources\Slides\SlidesResource;
+use App\MoonShine\Resources\Slide\SlideResource;
+use App\MoonShine\Resources\Image\ImageResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -29,9 +30,10 @@ class MoonShineServiceProvider extends ServiceProvider
                 MoonShineUserRoleResource::class,
                 ContentResource::class,
                 AdvantagesResource::class,
-                ChaptersResource::class,
+                ProductResource::class,
                 NewsResource::class,
-                SlidesResource::class,
+                SlideResource::class,
+                ImageResource::class,
             ])
             ->pages([
                 ...$core->getConfig()->getPages(),

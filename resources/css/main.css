@@ -2,6 +2,10 @@
     background-color: #003726;
 }
 
+ul {
+    list-style-type: disc !important;
+}
+
 .bg-green-middle {
     background-color: #004733;
 }

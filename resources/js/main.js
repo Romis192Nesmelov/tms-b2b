@@ -6,15 +6,20 @@ $(document).ready(function() {
         // $(window).scrollTop(0);
     });
 
-    $('.fancybox').fancybox({
-        'autoScale': true,
-        'touch': false,
-        'transitionIn': 'elastic',
-        'transitionOut': 'elastic',
-        'speedIn': 500,
-        'speedOut': 300,
-        'autoDimensions': true,
-        'centerOnScroll': true
+    bindFancybox();
+
+    $('#product-images a').click(function (e) {
+        e.preventDefault();
+        let currentImg = $(this).find('img'),
+            mainImgHref = $('#product-main-image-href'),
+            mainImg = $('#product-main-image'),
+            oldMainImgSrc = mainImg.attr('src');
+
+        mainImg.attr('src',currentImg.attr('src'));
+        mainImgHref.attr('href',currentImg.attr('src'));
+        currentImg.attr('src',oldMainImgSrc);
+
+        // alert($(this).find('img').attr('src'));
     });
 
     // $('input[name=phone]').mask("+7(999)999-99-99");
@@ -74,6 +79,19 @@ const goToScroll = (scrollData) => {
         scrollTop: $('div[data-scroll=' + scrollData + ']').offset().top
     }, 1000, 'easeInOutQuint', function () {
         // window.scrollFlag = false;
+    });
+}
+
+const bindFancybox = () => {
+    $('a.fancybox').fancybox({
+        'autoScale': true,
+        'touch': false,
+        'transitionIn': 'elastic',
+        'transitionOut': 'elastic',
+        'speedIn': 500,
+        'speedOut': 300,
+        'autoDimensions': true,
+        'centerOnScroll': true
     });
 }
 
