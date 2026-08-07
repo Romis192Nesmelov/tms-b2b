@@ -15,9 +15,15 @@ $(document).ready(function() {
             mainImg = $('#product-main-image'),
             oldMainImgSrc = mainImg.attr('src');
 
-        mainImg.attr('src',currentImg.attr('src'));
-        mainImgHref.attr('href',currentImg.attr('src'));
-        currentImg.attr('src',oldMainImgSrc);
+        currentImg.animate({'opacity':0});
+        mainImg.animate({'opacity':0}, function() {
+            mainImg.attr('src',currentImg.attr('src'));
+            mainImgHref.attr('href',currentImg.attr('src'));
+            currentImg.attr('src',oldMainImgSrc);
+
+            mainImg.animate({'opacity':1});
+            currentImg.animate({'opacity':1});
+        });
 
         // alert($(this).find('img').attr('src'));
     });
