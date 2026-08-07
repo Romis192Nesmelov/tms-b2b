@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+
 class BaseController extends Controller
 {
     protected array $mainMenu;
@@ -9,9 +11,19 @@ class BaseController extends Controller
     public function __construct()
     {
         $this->mainMenu = [
-            'home'     => __('Home'),
-            'catalogue'     => __('Catalogue'),
-//            'news'          => __('News')
+            [
+                'route' => 'home',
+                'name' => __('Home')
+            ],
+            [
+                'route' => 'catalogue',
+                'name' => __('Catalogue'),
+                'sub_menu' => Product::query()
+                    ->where('active',1)
+                    ->select(['name','slug'])
+                    ->get()
+            ],
+//            'news'      => __('News')
         ];
     }
 }

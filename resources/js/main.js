@@ -6,6 +6,17 @@ $(document).ready(function() {
         // $(window).scrollTop(0);
     });
 
+    $('#hamburger').click(function () {
+        $(this).find('path').toggle();
+        $('#responsive-nav').toggle();
+    });
+
+    $('.with-sub-menu').mouseover(function () {
+        $(this).find('ul').removeClass('hidden');
+    }).mouseout(function () {
+        $(this).find('ul').addClass('hidden');
+    });
+
     bindFancybox();
 
     $('#product-images a').click(function (e) {

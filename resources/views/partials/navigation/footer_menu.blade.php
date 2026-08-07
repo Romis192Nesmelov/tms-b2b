@@ -1,11 +1,5 @@
 <ul class="list-none">
-    @foreach($navs as $key => $item)
-        @if (is_array($item))
-            @foreach($item as $href => $name)
-                @include('partials.navigation.responsive_footer_link', ['key' => $href, 'item' => $name])
-            @endforeach
-        @else
-            @include('partials.navigation.responsive_footer_link')
-        @endif
+    @foreach($navs as $item)
+        <li class="focus:text-yellow-400 hover:text-yellow-400 {{ request()->routeIs($item['route']) ? 'text-yellow-400' : 'text-white' }}"><a href="{{ route($item['route']) }}">{{ $item['name'] }}</a></li>
     @endforeach
 </ul>

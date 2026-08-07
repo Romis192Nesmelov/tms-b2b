@@ -18,7 +18,12 @@ class ProductController extends BaseController
     {
         $breadcrumbs = [['href' => 'catalogue', 'name' => __('Catalogue')]];
         if ($slug) {
-            if ($product = Product::query()->where('slug',$slug)->with('activeImages')->first()) {
+            if ($product = Product::query()
+                ->where('slug',$slug)
+                ->where('active',1)
+                ->with('activeImages')
+                ->first()
+            ) {
                 $breadcrumbs[] = ['href' => 'catalogue', 'slug' => $product->slug, 'name' => $product->name];
                 return view('product', [
                     'breadcrumbs' => $breadcrumbs,
