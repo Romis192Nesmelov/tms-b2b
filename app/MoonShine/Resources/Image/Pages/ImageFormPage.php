@@ -14,6 +14,7 @@ use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use App\MoonShine\Resources\Image\ImageResource;
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\Layout\Column;
+use MoonShine\UI\Components\Layout\Divider;
 use MoonShine\UI\Components\Layout\Grid;
 use MoonShine\UI\Fields\Checkbox;
 use MoonShine\UI\Fields\ID;
@@ -41,6 +42,7 @@ class ImageFormPage extends FormPage
                     ])->columnSpan(6),
                     Column::make([
                         BelongsTo::make(__('Product'), 'product', fn ($item) => $item->name),
+                        Divider::make(),
                         Checkbox::make(__('Active'), 'active')->nullable()->default(1),
                     ])->columnSpan(6),
                 ])

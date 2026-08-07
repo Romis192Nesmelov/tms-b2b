@@ -10,6 +10,7 @@ use MoonShine\Laravel\Pages\Crud\FormPage;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\FormBuilderContract;
 use MoonShine\TinyMce\Fields\TinyMce;
+use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\FormBuilder;
 use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
@@ -55,7 +56,10 @@ class ProductFormPage extends FormPage
                         __('Images'),
                         'images',
                         resource: ImageResource::class
-                    ),
+                    )->creatable(true)
+                    ->modifyCreateButton(function (ActionButton $button) {
+                        return $button->setLabel(__('Add image'));
+                    }),
                 ])
             ]),
         ];
