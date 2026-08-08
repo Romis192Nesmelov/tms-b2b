@@ -57,6 +57,7 @@ class ProductFormPage extends FormPage
                         'images',
                         resource: ImageResource::class
                     )->creatable(true)
+                    ->searchable(false)
                     ->modifyCreateButton(function (ActionButton $button) {
                         return $button->setLabel(__('Add image'));
                     }),
