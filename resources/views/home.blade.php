@@ -1,7 +1,7 @@
 <x-app-layout>
     @include('partials.slots')
 
-    <div class="min-h-screen max-w-7xl mx-auto py-6">
+    <div class="min-h-screen max-w-7xl mx-auto py-6 overflow-hidden">
         @if ($slides->count())
             <div class="owl-carousel slider mb-8 pb-8">
                 @each('partials.slide', $slides, 'slide')

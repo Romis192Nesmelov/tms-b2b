@@ -49,6 +49,9 @@ $(document).ready(function() {
         autoplayTimeout: 5000,
         dots: true,
         responsive: {
+            380: {
+                items: 1
+            },
             400: {
                 items: 1
             },
@@ -70,6 +73,9 @@ $(document).ready(function() {
         autoplayTimeout: 7000,
         dots: false,
         responsive: {
+            380: {
+                items: 1
+            },
             400: {
                 items: 1
             },
