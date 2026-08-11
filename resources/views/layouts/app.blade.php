@@ -19,7 +19,7 @@
 {{--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript"></script>--}}
 {{--    <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js" type="text/javascript"></script>--}}
 
-    {{--        <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript"></script>--}}
+    <script src="https://cdn.jsdelivr.net/npm/jquery.maskedinput@1.4.1/src/jquery.maskedinput.min.js" type="text/javascript"></script>
     {{--        <script src="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/js/pagedone.js"></script>--}}
     {{--        <link href="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/css/pagedone.css " rel="stylesheet"/>--}}
     @vite([
@@ -49,7 +49,7 @@
             </div>
             <div class="px-2">
                 <form>
-                    <x-text-input icon="search_icon.svg" placeholder="{{ __('Search') }}"></x-text-input>
+                    <x-text-input id="search" icon="search_icon.svg" placeholder="{{ __('Search') }}"></x-text-input>
                 </form>
             </div>
         </div>
@@ -87,7 +87,41 @@
 
 <img id="on_top_button" class="hover:opacity-50" src="{{ asset('storage/images/ontop_icon.svg') }}" />
 
-{{--        <x-modal name="our-mission" focusable>--}}
-{{--        </x-modal>--}}
+<x-modal id="request-order">
+    <form id="order-form" method="POST" action="{{ route('order') }}">
+        @csrf
+        <div class="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <h2 class="text-xl font-semibold text-white mb-5">{{ __('Submit a production request') }}</h2>
+            @include('partials.form.input-form',['name' => 'name', 'placeholder' => __('User name')])
+            @include('partials.form.input-form',['name' => 'email', 'placeholder' => 'E-mail'])
+            @include('partials.form.input-form',['name' => 'phone', 'placeholder' => '+7(___)___-__-__'])
+            <textarea name="text" minlength="3" maxlength="300" class="w-full bg-gray-600 text-white px-3 py-1 rounded-md" placeholder="{{ __('Your message') }}"></textarea>
+            @include('partials.form.input-form-error', ['name' => 'text'])
+        </div>
+        <div class="bg-gray-700/25 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+            <button type="submit" command="close" commandfor="request-order" class="inline-flex w-full justify-center rounded-md bg-green border-2 border-solid border-green-800 hover:border-yellow-400 focus:border-yellow-400 text-neutral-300 hover:text-yellow-400 focus:text-yellow-400 px-3 py-2 text-sm font-semibold text-white hover:bg-red-400 sm:ml-3 sm:w-auto">{{ __('Send') }}</button>
+            <button type="button" command="close" commandfor="request-order" class="mt-3 inline-flex w-full justify-center rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-white inset-ring inset-ring-white/5 hover:bg-white/20 sm:mt-0 sm:w-auto">{{ __('Cancel') }}</button>
+        </div>
+    </form>
+</x-modal>
+
+<x-modal id="success-message">
+    <div class="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div class="sm:flex sm:items-start">
+            <div class="mx-auto flex size-50 shrink-0 items-center justify-center rounded-full bg-red-500/10 sm:mx-0 sm:size-10">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-10 text-red-400">
+                    <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <h2 class="text-xl font-semibold text-white mb-5">{{ __('The order has been successfully submitted!') }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="bg-gray-700/25 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+        <button type="button" command="close" commandfor="success-message" class="mt-3 inline-flex w-full justify-center rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-white inset-ring inset-ring-white/5 hover:bg-white/20 sm:mt-0 sm:w-auto">{{ __('Close') }}</button>
+    </div>
+</x-modal>
+
 </body>
 </html>

@@ -2,7 +2,7 @@
    @if ($item instanceof \App\Models\Product)
         href="{{ route('catalogue', ['slug' => $item->slug]) }}"
    @elseif ($item instanceof \App\Models\News)
-        href="#"
+        href="{{ route('news', ['slug' => $item->slug]) }}"
    @else
         href="#"
    @endif
@@ -13,7 +13,8 @@
     @if ($item instanceof \App\Models\Product)
         <p class="w-full text-center uppercase text-sm font-semibold p-2">{{ $item->name }}</p>
     @else
-        <p class="w-full text-center uppercase text-xl font-semibold leading-5 p-2">{{ $item['title'] }}</p>
-        <p class="w-full text-center text-sm leading-5">{{ $item['description'] }}</p>
+        <p class="w-full text-center text-gray-600 text-md font-semibold pt-3">{{ carbonDate($item->date) }}</p>
+        <p class="w-full text-center uppercase text-xl font-semibold leading-5 p-2">{{ $item->title }}</p>
+        <p class="w-full text-center text-xs leading-5">{{ $item->description }}</p>
     @endif
 </a>

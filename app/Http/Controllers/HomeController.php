@@ -23,7 +23,7 @@ class HomeController extends BaseController
             'products' => Product::query()->where('active',1)->get(),
             'content' => Content::query()->where('id',1)->first(),
             'advantages' => Advantage::query()->where('active',1)->get(),
-            'news' => News::query()->where('active',1)->orderByDesc('created_at')->limit(4)->get()
+//            'news' => News::query()->where('active',1)->orderByDesc('created_at')->limit(4)->get()
         ]);
     }
 }

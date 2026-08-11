@@ -19,7 +19,9 @@
                             @if (isset($item['sub_menu']) && count($item['sub_menu']))
                                 <ul class="hidden absolute mt-6 p-4 rounded-sm bg-green-900 text-white border-1 border-yellow-400 z-999">
                                     @foreach($item['sub_menu'] as $subMenu)
-                                        <li class="list-none"><a href="{{ route($item['route'], ['slug' => $subMenu->slug]) }}" class="inline-flex items-left pt-1 hover:text-yellow-400 focus:text-yellow-400 font-medium {{ request()->routeIs($item['route']) ? 'text-yellow-400' : 'text-neutral-100' }}">{!! strBreak($subMenu->name) !!}</a></li>
+                                        <li class="list-none">
+                                            <a href="{{ route($item['route'], ['slug' => $subMenu['slug']]) }}" class="inline-flex items-left pt-1 hover:text-yellow-400 focus:text-yellow-400 font-medium {{ request()->routeIs($item['route']) && request()->slug == $subMenu['slug'] ? 'text-yellow-400' : 'text-neutral-100' }}">{!! strBreak($subMenu['name']) !!}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             @endif

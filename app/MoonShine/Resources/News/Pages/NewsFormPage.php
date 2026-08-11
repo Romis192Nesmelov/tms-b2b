@@ -20,7 +20,9 @@ use MoonShine\UI\Fields\Checkbox;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\UI\Fields\Image;
+use MoonShine\UI\Fields\Date;
 use MoonShine\UI\Fields\Text;
+use MoonShine\UI\Fields\Textarea;
 use Throwable;
 
 
@@ -40,15 +42,17 @@ class NewsFormPage extends FormPage
                 Grid::make([
                     Column::make([
                         Image::make(__('Image'), 'image')->disk('public')->dir('images/news'),
+                        Divider::make(),
+                        Date::make(__('Date'),'date')->required()->format('d.m.Y'),
+                        Divider::make(),
+                        Checkbox::make(__('Active'), 'active')->nullable()->default(1),
                     ])->columnSpan(2),
                     Column::make([
                         Text::make(__('Title'), 'title')->required(),
                         Divider::make(),
-                        Text::make(__('Description'), 'description')->required(),
+                        Textarea::make(__('Description'), 'description')->required(),
                         Divider::make(),
                         TinyMce::make(__('Text'), 'text')->required()->customAttributes(['rows' => 20]),
-                        Divider::make(),
-                        Checkbox::make(__('Active'), 'active')->nullable()->default(1),
                     ])->columnSpan(10)
                 ])
             ]),
@@ -68,11 +72,12 @@ class NewsFormPage extends FormPage
     protected function rules(DataWrapperContract $item): array
     {
         return [
-            'image' => ['required_without:id', 'mimes:svg,jpg,png', 'max:2000'],
-            'title' => ['required', 'min:3', 'max:30'],
-            'description' => ['required', 'min:3', 'max:191'],
-            'text' => ['required', 'min:5', 'max:5000'],
-            'active' => ['nullable', 'max:1'],
+            'image' =>          ['required_without:id', 'mimes:svg,jpg,png', 'max:2000'],
+            'title' =>          ['required', 'min:3', 'max:191'],
+            'description' =>    ['required', 'min:3', 'max:191'],
+            'text' =>           ['required', 'min:5', 'max:5000'],
+            'date' =>           ['required','date'],
+            'active' =>         ['nullable', 'max:1'],
         ];
     }
 

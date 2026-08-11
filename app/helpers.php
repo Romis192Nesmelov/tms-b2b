@@ -36,3 +36,12 @@ function getImage(\Illuminate\Database\Eloquent\Model $model): string
 {
     return asset($model->image && file_exists('storage/'.$model->image) ? 'storage/'.$model->image : 'storage/images/placeholder.jpg');
 }
+
+function generateFakeText(): string
+{
+    $text = '';
+    for($i=0;$i<rand(5,10);$i++) {
+        $text .= '<p>'.fake()->paragraph().'</p>';
+    }
+    return $text;
+}

@@ -85,6 +85,32 @@ nav .h-full .relative > div > a {
     z-index: 999;
 }
 
+.pagination nav p.text-sm {
+    display: none;
+}
+
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: black;
+    opacity: 0.6;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loader > div {
+    width: 50px;
+    height: 50px;
+    background-image: url("/public/storage/images/preloader.gif");
+    background-size: 100%;
+}
+
+
 @media (max-width: 1280px) {
     .owl-carousel.slider {
         padding-left: 20px;

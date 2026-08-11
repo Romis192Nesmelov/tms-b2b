@@ -8,6 +8,8 @@
     "Products": "Продукты",
     "Advantages": "Преимущества",
     "News": "Новости",
+    "Date": "Дата",
+    "Year": "Год",
     "All news": "Все новости",
     "Documents": "Документы",
     "Content": "Контент",
@@ -22,5 +24,14 @@
     "Text": "Текст",
     "Description": "Описание",
     "©STRUT-consoles": "©STRUT-консоли",
-    "Properties and advantages": "Свойства и преимущества"
+    "Properties and advantages": "Свойства и преимущества",
+    "Close": "Закрыть",
+    "Send": "Отправить",
+    "User name": "Имя пользователя",
+    "Phone": "Телефон",
+    "Your message": "Ваше сообщение",
+    "Message from the site": "Сообщение с сайта",
+    "Message": "Сообщение",
+    "Order from the site": "Заказ с сайта",
+    "The order has been successfully submitted!": "Заявка успешно отправлена!"
 }

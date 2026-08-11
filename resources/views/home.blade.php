@@ -34,15 +34,17 @@
         </div>
     </div>
 
-    <x-gray-part>
-        @include('partials.head1',['head' => __('News')])
-        <div class="owl-carousel news mb-3">
-            @each('partials.boxes', $news, 'item')
-        </div>
-        <div class="max-w-7xl mx-auto text-center">
-            <x-secondary-button class="w-50 my-4 text-center">{{ __('All news') }}</x-secondary-button>
-        </div>
-    </x-gray-part>
+{{--    <x-gray-part>--}}
+{{--        @include('partials.head1',['head' => __('News')])--}}
+{{--        <div class="owl-carousel news mb-3">--}}
+{{--            @each('partials.boxes', $news, 'item')--}}
+{{--        </div>--}}
+{{--        <div class="max-w-7xl mx-auto text-center">--}}
+{{--            <a href="{{ route('news') }}">--}}
+{{--                <x-secondary-button class="w-50 my-4 text-center">{{ __('All news') }}</x-secondary-button>--}}
+{{--            </a>--}}
+{{--        </div>--}}
+{{--    </x-gray-part>--}}
 
     <div class="max-w-7xl mx-auto py-6 px-3">
         <div class="w-full rounded-xl overflow-hidden border-3 border-solid border-green-800">
@@ -55,7 +57,7 @@
     <x-gray-part>
         @include('partials.head1',['head' => __('Submit a production request')])
         <div class="w-full text-center">
-            <x-primary-button class="w-90">{{ __('Let submit your application') }}</x-primary-button>
+            <x-secondary-button command="show-modal" commandfor="request-order">{{ __('Let submit your application') }}</x-secondary-button>
             <p class="text-neutral-300 text-center my-6">©2021-{{ date('Y') }} | {{ trans('content.footline') }}</p>
         </div>
     </x-gray-part>

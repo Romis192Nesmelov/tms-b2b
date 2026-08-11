@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\Product;
+use Carbon\Carbon;
 
 class BaseController extends Controller
 {
@@ -10,6 +12,17 @@ class BaseController extends Controller
 
     public function __construct()
     {
+//        $dates = News::query()->where('active',1)->select('date')->get();
+//        $existingYears = [];
+//        $years = [];
+//        foreach ($dates as $item) {
+//            $year = Carbon::parse($item->date)->format('Y');
+//            if (!in_array($year,$existingYears)) {
+//                $years[] = ['name' => __('Year').' '.$year, 'slug' => $year];
+//                $existingYears[] = $year;
+//            }
+//        }
+
         $this->mainMenu = [
             [
                 'route' => 'home',
@@ -23,7 +36,11 @@ class BaseController extends Controller
                     ->select(['name','slug'])
                     ->get()
             ],
-//            'news'      => __('News')
+//            [
+//                'route' => 'news',
+//                'name' => __('News'),
+//                'sub_menu' => $years
+//            ],
         ];
     }
 }

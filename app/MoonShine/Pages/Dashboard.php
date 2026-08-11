@@ -76,11 +76,11 @@ class Dashboard extends Page
                         ->value(fn () => Image::count())
                         ->icon('camera'),
                 ])->columnSpan(2),
-                Column::make([
-                    ValueMetric::make(fn () => (string) Link::make(app(NewsResource::class)->getIndexPageUrl(), __('News')))
-                        ->value(fn () => News::count())
-                        ->icon('newspaper'),
-                ])->columnSpan(2),
+//                Column::make([
+//                    ValueMetric::make(fn () => (string) Link::make(app(NewsResource::class)->getIndexPageUrl(), __('News')))
+//                        ->value(fn () => News::count())
+//                        ->icon('newspaper'),
+//                ])->columnSpan(2),
             ])
         ];
 	}

@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\News;
-use App\Models\Slide;
 use App\Models\Product;
-use App\Models\Content;
-use App\Models\Advantage;
 use Illuminate\View\View;
 
 class ProductController extends BaseController

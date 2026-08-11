@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 trait HelperTrait
 {
     public string $validationPhone = 'regex:/^((\+)?(\d)(\s)?(\()?[0-9]{3}(\))?(\s)?([0-9]{3})(\-)?([0-9]{2})(\-)?([0-9]{2}))$/';
+    public string $validationString = 'required|min:3|max:191';
+    public string $validationShortText = 'required|min:5|max:300';
+    public string $validationEmail = 'required|email';
 //    public string $validationDate = 'regex:/^(\d{2})\/(\d{2})\/(\d{4})$/';
 
 //    public $metas = [
