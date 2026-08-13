@@ -110,6 +110,11 @@ nav .h-full .relative > div > a {
     background-size: 100%;
 }
 
+.big-table-container {
+    width: 100%;
+    /*overflow-x: scroll;*/
+    border: 1px solid red;
+}
 
 @media (max-width: 1280px) {
     .owl-carousel.slider {

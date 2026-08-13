@@ -17,13 +17,14 @@ class ProductController extends BaseController
             if ($product = Product::query()
                 ->where('slug',$slug)
                 ->where('active',1)
-                ->with('activeImages')
+                ->with(['activeImages','activeArticles'])
                 ->first()
             ) {
                 $breadcrumbs[] = ['href' => 'catalogue', 'slug' => $product->slug, 'name' => $product->name];
                 return view('product', [
                     'breadcrumbs' => $breadcrumbs,
                     'nav_links' => $this->mainMenu,
+                    'productFields' => ['article','name','length','size','section','density'],
                     'product' => $product
                 ]);
             } else abort(404);

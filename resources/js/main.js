@@ -52,9 +52,25 @@ $(document).ready(function() {
         // $(window).scrollTop(0);
     });
 
+    // Init big table hor-scroll
     setTimeout(function () {
         bigTablesScroll();
-    },200);
+    },1000);
+
+    // Removing empty cells
+    let articlesTable = $('table.articles-table');
+    if (articlesTable.length) {
+        $.each(window.productFields, function (key, field) {
+            let emptyCellsFlag = false;
+            articlesTable.find('td.product-' + field).each(function () {
+                let cellContent = $(this).html();
+                if (cellContent.length) emptyCellsFlag = true;
+            });
+            if (!emptyCellsFlag) {
+                $('.product-' + field).remove();
+            }
+        });
+    }
 
     $(window).resize(function() {
         bigTablesScroll();
