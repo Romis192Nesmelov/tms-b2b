@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description',191);
             $table->text('text');
             $table->timestamp('date');
-            $table->tinyInteger('active')->nullable();
+            $table->boolean('active')->nullable();
             $table->timestamps();
         });
     }

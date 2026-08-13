@@ -10,12 +10,14 @@ use MoonShine\ColorManager\ColorManager;
 use MoonShine\Contracts\ColorManager\ColorManagerContract;
 use MoonShine\Contracts\ColorManager\PaletteContract;
 use App\MoonShine\Resources\Content\ContentResource;
+use MoonShine\MenuManager\MenuGroup;
 use MoonShine\MenuManager\MenuItem;
 use App\MoonShine\Resources\Advantages\AdvantagesResource;
 use App\MoonShine\Resources\Product\ProductResource;
 use App\MoonShine\Resources\News\NewsResource;
 use App\MoonShine\Resources\Slide\SlideResource;
 use App\MoonShine\Resources\Image\ImageResource;
+use App\MoonShine\Resources\Article\ArticleResource;
 
 final class MoonShineLayout extends AppLayout
 {
@@ -38,9 +40,12 @@ final class MoonShineLayout extends AppLayout
             MenuItem::make(SlideResource::class, __('Slides')),
             MenuItem::make(ContentResource::class, __('Content')),
             MenuItem::make(AdvantagesResource::class, __('Advantages')),
-            MenuItem::make(ProductResource::class, __('Products')),
+            MenuGroup::make(static fn() => __('Products'), [
+                MenuItem::make(ProductResource::class, __('Products')),
+                MenuItem::make(ImageResource::class, __('Images')),
+                MenuItem::make(ArticleResource::class, __('Articles')),
+            ]),
 //            MenuItem::make(NewsResource::class, __('News')),
-            MenuItem::make(ImageResource::class, __('Images')),
         ];
     }
 

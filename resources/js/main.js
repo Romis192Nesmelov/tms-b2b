@@ -8,7 +8,7 @@ $(document).ready(function() {
             // agree = form.find('input[name=i_agree]');
 
         if (form.length /*=&& agree.is(':checked')*/) {
-            addLoader();
+            addLoader(modalId);
             form.find('input, textarea, select').each(function () {
                 let self = $(this);
                 // if (self.attr('type') === 'file') formData.append(self.attr('name'),self[0].files[0]);
@@ -26,12 +26,12 @@ $(document).ready(function() {
                 processData: false,
                 contentType: false,
                 type: form.attr('method'),
-                success: function () {
+                success: function (data) {
                     form.find('input, textarea').val('');
                     closeModal(modalId);
                     unlockAll(form);
                     removeLoader();
-                    openModal('success-message');
+                    openAnswerModal(data.answer);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     let response = jQuery.parseJSON(jqXHR.responseText);
@@ -50,6 +50,14 @@ $(document).ready(function() {
     onTopButton.click(()=> {
         goToScroll('top');
         // $(window).scrollTop(0);
+    });
+
+    setTimeout(function () {
+        bigTablesScroll();
+    },200);
+
+    $(window).resize(function() {
+        bigTablesScroll();
     });
 
     $('#hamburger').click(function () {
@@ -200,6 +208,33 @@ const openModal = (id) => {
     document.querySelector('#' + id).showModal();
 }
 
+const openAnswerModal = (answer) => {
+    let idAnswerModal = 'success-message';
+    $('#' + idAnswerModal).find('h2').html(answer);
+    openModal(idAnswerModal);
+}
+
+const bigTablesScroll = () => {
+    let bigTable = $('.big-table-container');
+    if (bigTable.length && $(window).width() <= 1024) {
+        bigTable.mCustomScrollbar({
+            axis: 'x',
+            theme: 'light-3',
+            alwaysShowScrollbar: 2,
+            advanced: {
+                autoExpandHorizontalScroll: true
+            }
+        });
+
+        // $(window).scroll(function () {
+        //     let offset = window.pageYOffset-bigTable.offset().top;
+        //     offset = offset < 0 ? 0 : offset;
+        //     $('.mCSB_scrollTools.mCSB_scrollTools_horizontal').css('top',offset);
+        // });
+    } else if (bigTable) {
+        bigTable.mCustomScrollbar('destroy');
+    }
+}
 
 // const getQueryParams = (qs) => {
 //     qs = qs.split('+').join(' ');

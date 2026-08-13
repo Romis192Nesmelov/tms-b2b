@@ -16,6 +16,7 @@ use App\MoonShine\Resources\Product\ProductResource;
 use App\MoonShine\Resources\News\NewsResource;
 use App\MoonShine\Resources\Slide\SlideResource;
 use App\MoonShine\Resources\Image\ImageResource;
+use App\MoonShine\Resources\Article\ArticleResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,7 @@ class MoonShineServiceProvider extends ServiceProvider
                 NewsResource::class,
                 SlideResource::class,
                 ImageResource::class,
+                ArticleResource::class,
             ])
             ->pages([
                 ...$core->getConfig()->getPages(),

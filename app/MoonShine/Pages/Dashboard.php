@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Pages;
 use App\Models\Advantage;
+use App\Models\Article;
 use App\Models\Product;
 use App\Models\Content;
 
 use App\Models\Image;
 use App\Models\News;
 use App\Models\Slide;
+use App\MoonShine\Resources\Article\ArticleResource;
 use App\MoonShine\Resources\Image\ImageResource;
 use App\MoonShine\Resources\News\NewsResource;
 use App\MoonShine\Resources\Advantages\AdvantagesResource;
@@ -75,6 +77,11 @@ class Dashboard extends Page
                     ValueMetric::make(fn () => (string) Link::make(app(ImageResource::class)->getIndexPageUrl(), __('Images')))
                         ->value(fn () => Image::count())
                         ->icon('camera'),
+                ])->columnSpan(2),
+                Column::make([
+                    ValueMetric::make(fn () => (string) Link::make(app(ArticleResource::class)->getIndexPageUrl(), __('Articles')))
+                        ->value(fn () => Article::count())
+                        ->icon('archive-box'),
                 ])->columnSpan(2),
 //                Column::make([
 //                    ValueMetric::make(fn () => (string) Link::make(app(NewsResource::class)->getIndexPageUrl(), __('News')))

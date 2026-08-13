@@ -52,7 +52,7 @@
     "src": "_instrument-sans-600-normal-DMks36a2.woff"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CHdgZfEe.css",
+    "file": "assets/app-8HhbpEjb.css",
     "name": "app",
     "names": [
       "app.css"
@@ -69,14 +69,26 @@
     "src": "resources/css/jquery.fancybox.min.css",
     "isEntry": true
   },
+  "resources/css/jquery.mCustomScrollbar.css": {
+    "file": "assets/jquery-GlFLP_bF.css",
+    "name": "jquery.mCustomScrollbar",
+    "names": [
+      "jquery.css"
+    ],
+    "src": "resources/css/jquery.mCustomScrollbar.css",
+    "isEntry": true
+  },
   "resources/css/main.css": {
-    "file": "assets/main-Dk2HdzpQ.css",
+    "file": "assets/main-kG5ZHVDu.css",
     "name": "main",
     "names": [
       "main.css"
     ],
     "src": "resources/css/main.css",
-    "isEntry": true
+    "isEntry": true,
+    "assets": [
+      "assets/preloader-C3Tjf9jM.gif"
+    ]
   },
   "resources/css/owl.carousel.min.css": {
     "file": "assets/owl.carousel-nTSTM-gJ.css",
@@ -100,7 +112,7 @@
     "isEntry": true
   },
   "resources/js/main.js": {
-    "file": "assets/main-UEA9VesR.js",
+    "file": "assets/main-DSWTIdO7.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true
@@ -110,5 +122,9 @@
     "name": "owl.carousel",
     "src": "resources/js/owl.carousel.js",
     "isEntry": true
+  },
+  "storage/app/public/images/preloader.gif": {
+    "file": "assets/preloader-C3Tjf9jM.gif",
+    "src": "storage/app/public/images/preloader.gif"
   }
 }

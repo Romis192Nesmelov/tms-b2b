@@ -2,20 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\MoonShine\Resources\Product\Pages;
+namespace App\MoonShine\Resources\Article\Pages;
 
-use App\MoonShine\Resources\Article\ArticleResource;
-use App\MoonShine\Resources\Image\ImageResource;
-use MoonShine\Laravel\Fields\Relationships\HasMany;
+use MoonShine\Laravel\Fields\Relationships\BelongsTo;
 use MoonShine\Laravel\Pages\Crud\FormPage;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\FormBuilderContract;
-use MoonShine\TinyMce\Fields\TinyMce;
-use MoonShine\UI\Components\ActionButton;
 use MoonShine\UI\Components\FormBuilder;
 use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
-use App\MoonShine\Resources\Product\ProductResource;
+use App\MoonShine\Resources\Article\ArticleResource;
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Components\Layout\Column;
 use MoonShine\UI\Components\Layout\Divider;
@@ -23,15 +19,15 @@ use MoonShine\UI\Components\Layout\Grid;
 use MoonShine\UI\Fields\Checkbox;
 use MoonShine\UI\Fields\ID;
 use MoonShine\UI\Components\Layout\Box;
-use MoonShine\UI\Fields\Image;
+use MoonShine\UI\Fields\Number;
 use MoonShine\UI\Fields\Text;
 use Throwable;
 
 
 /**
- * @extends FormPage<ProductResource>
+ * @extends FormPage<ArticleResource>
  */
-class ProductFormPage extends FormPage
+class ArticleFormPage extends FormPage
 {
     /**
      * @return list<ComponentContract|FieldContract>
@@ -43,35 +39,22 @@ class ProductFormPage extends FormPage
                 ID::make(),
                 Grid::make([
                     Column::make([
-                        Image::make(__('Image'), 'image')->disk('public')->dir('images/catalogue'),
-                    ])->columnSpan(2),
-                    Column::make([
+                        BelongsTo::make(__('Product'), 'product', fn ($item) => $item->name),
+                        Divider::make(),
+                        Number::make(__('Article'), 'article')->required(),
+                        Divider::make(),
                         Text::make(__('Name'), 'name')->required(),
                         Divider::make(),
-                        TinyMce::make(__('Description'), 'description')->required()->customAttributes(['rows' => 20]),
+                        Number::make(__('Length'), 'length')->required()
+                    ])->columnSpan(10),
+                    Column::make([
+                        Text::make(__('Size'), 'size')->nullable(),
+                        Text::make(__('Section'), 'section')->required(),
+                        Text::make(__('Density'), 'density')->required(),
+                        Number::make(__('Package'), 'package')->required(),
                         Divider::make(),
                         Checkbox::make(__('Active'), 'active')->nullable()->default(1),
-                    ])->columnSpan(10),
-
-                    HasMany::make(
-                        __('Images'),
-                        'images',
-                        resource: ImageResource::class
-                    )->creatable(true)
-                        ->searchable(false)
-                        ->modifyCreateButton(function (ActionButton $button) {
-                            return $button->setLabel(__('Add image'));
-                        }),
-
-                    HasMany::make(
-                        __('Articles'),
-                        'articles',
-                        resource: ArticleResource::class
-                    )->creatable(true)
-                        ->searchable(false)
-                        ->modifyCreateButton(function (ActionButton $button) {
-                            return $button->setLabel(__('Add article'));
-                        }),
+                    ])->columnSpan(2),
                 ])
             ]),
         ];
@@ -90,10 +73,14 @@ class ProductFormPage extends FormPage
     protected function rules(DataWrapperContract $item): array
     {
         return [
-            'image' => ['required_without:id', 'mimes:svg,png', 'max:2000'],
             'name' => ['required', 'min:3', 'max:191'],
-            'description' => ['required', 'min:5', 'max:66000'],
+            'length' => ['required', 'integer'],
+            'size' => ['nullable', 'regex:/^(\d)[1-3](x|х)(\d)[1-3]$/i'],
+            'section' => ['required', 'numeric'],
+            'density' => ['required', 'numeric'],
+            'package' => ['required', 'integer'],
             'active' => ['nullable', 'max:1'],
+            'product_id' => ['required', 'integer', 'exists:products,id'],
         ];
     }
 

@@ -16,6 +16,7 @@
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.1.5/jquery.mCustomScrollbar.min.js"></script>
 {{--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript"></script>--}}
 {{--    <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js" type="text/javascript"></script>--}}
 
@@ -26,6 +27,7 @@
         'resources/css/app.css',
         'resources/css/owl.carousel.min.css',
         'resources/css/jquery.fancybox.min.css',
+        'resources/css/jquery.mCustomScrollbar.css',
         'resources/css/main.css',
         'resources/js/owl.carousel.js',
         'resources/js/jquery.fancybox.min.js',
@@ -88,7 +90,7 @@
 <img id="on_top_button" class="hover:opacity-50" src="{{ asset('storage/images/ontop_icon.svg') }}" />
 
 <x-modal id="request-order">
-    <form id="order-form" method="POST" action="{{ route('order') }}">
+    <form id="order-form" method="POST" action="{{ route('api.message') }}">
         @csrf
         <div class="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <h2 class="text-xl font-semibold text-white mb-5">{{ __('Submit a production request') }}</h2>
@@ -114,7 +116,7 @@
                 </svg>
             </div>
             <div class="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h2 class="text-xl font-semibold text-white mb-5">{{ __('The order has been successfully submitted!') }}</h2>
+                <h2 class="text-xl font-semibold text-white mb-5"></h2>
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/css/owl.carousel.min.css',
                 'resources/css/jquery.fancybox.min.css',
+                'resources/css/jquery.mCustomScrollbar.css',
                 'resources/css/main.css',
                 'resources/js/owl.carousel.js',
                 'resources/js/jquery.fancybox.min.js',

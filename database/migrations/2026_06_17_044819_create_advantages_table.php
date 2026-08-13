@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('image');
             $table->string('text',50);
-            $table->tinyInteger('active')->nullable();
+            $table->boolean('active')->nullable();
             $table->timestamps();
         });
     }

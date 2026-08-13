@@ -6,7 +6,7 @@ use App\Http\Controllers\HelperTrait;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class OrderRequest extends FormRequest
+class MessageRequest extends FormRequest
 {
     use HelperTrait;
     /**

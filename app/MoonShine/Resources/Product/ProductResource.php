@@ -21,7 +21,7 @@ class ProductResource extends ModelResource
 
     protected string $column = 'name';
 
-    protected array $with = ['images'];
+    protected array $with = ['images','articles'];
 
     protected string $sortColumn = 'id';
 

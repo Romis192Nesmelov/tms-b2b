@@ -36,4 +36,14 @@ class Product extends Model
     {
         return $this->hasMany(Image::class)->where('active',1);
     }
+
+    public function articles(): HasMany
+    {
+        return $this->hasMany(Article::class);
+    }
+
+    public function activeArticles(): HasMany
+    {
+        return $this->hasMany(Article::class)->where('active',1);
+    }
 }

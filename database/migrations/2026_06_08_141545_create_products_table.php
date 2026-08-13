@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('name');
             $table->longText('description');
-            $table->tinyInteger('active')->nullable();
+            $table->boolean('active')->nullable();
             $table->timestamps();
         });
     }
