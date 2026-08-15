@@ -57,9 +57,45 @@
     <x-gray-part>
         @include('partials.head1',['head' => __('Submit a production request')])
         <div class="w-full text-center">
-            <x-secondary-button command="show-modal" commandfor="request-order">{{ __('Let submit your application') }}</x-secondary-button>
+            <x-secondary-button command="show-modal" commandfor="send-message">{{ __('Let submit your application') }}</x-secondary-button>
             <p class="text-neutral-300 text-center my-6">©2021-{{ date('Y') }} | {{ trans('content.footline') }}</p>
         </div>
     </x-gray-part>
+
+    <x-modal id="send-message">
+        <form id="order-form" method="POST" action="{{ route('api.message') }}">
+            @csrf
+            <div class="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <h2 class="text-xl font-semibold text-white mb-5">{{ __('Submit a production request') }}</h2>
+                <div class="w-full mb-3">
+                    @include('partials.form.input-form',[
+                        'name' => 'name',
+                        'class' => 'w-full',
+                        'placeholder' => __('User name'),
+                        'with_error' => true
+                    ])
+                </div>
+                <div class="w-full mb-3">
+                    @include('partials.form.input-form',[
+                        'name' => 'email',
+                        'class' => 'w-full',
+                        'placeholder' => 'E-mail',
+                        'with_error' => true
+                    ])
+                </div>
+                <div class="w-full mb-3">
+                    @include('partials.form.input-form',[
+                        'name' => 'phone',
+                        'class' => 'w-full',
+                        'placeholder' => '+7(___)___-__-__',
+                        'with_error' => true
+                    ])
+                </div>
+                <textarea name="text" minlength="3" maxlength="300" class="w-full bg-gray-600 text-white px-3 py-1 rounded-md" placeholder="{{ __('Your message') }}"></textarea>
+                @include('partials.form.input-form-error', ['name' => 'text'])
+            </div>
+            @include('partials.modal-buttons-pair',['modalId' => 'send-message', 'submitText' => __('Send')])
+        </form>
+    </x-modal>
 
 </x-app-layout>

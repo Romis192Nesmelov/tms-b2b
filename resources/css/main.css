@@ -113,7 +113,11 @@ nav .h-full .relative > div > a {
 .big-table-container {
     width: 100%;
     /*overflow-x: scroll;*/
-    border: 1px solid red;
+}
+
+.big-table-container table {
+    width: 100%;
+    min-width: 1024px;
 }
 
 @media (max-width: 1280px) {

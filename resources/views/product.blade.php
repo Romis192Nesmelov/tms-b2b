@@ -23,31 +23,38 @@
             </div>
         </div>
         @if (count($product->activeArticles))
-{{--            <div class="big-table-container">--}}
-            <table class="articles-table min-w-full table-auto border border-gray-300">
-                <thead class="bg-gray-600">
-                    <tr>
-                        @foreach($productFields as $ka => $fieldName)
-                            <th class="p-1 text-gray-400 {{ $ka == 1 ? 'text-left' : 'text-center' }} product-{{ $fieldName }}">{{ trans('product.'.$fieldName) }}</th>
-                            <script>window.productFields.push("{{ $fieldName }}");</script>
-                        @endforeach
-                        <th class="p-1 text-gray-400 text-center">
-                            <img class="size-4" src="{{ asset('/storage/images/basket_icon.svg') }}" />
-                        </th>
-                    </tr>
-                </thead>
-                @foreach($product->activeArticles as $ka => $article)
-                    <tr {{ $ka %2 ? 'class=bg-gray-800' : '' }}>
-                        @foreach($productFields as $kf => $fieldName)
-                            <td class="{{ $kf == 1 ? 'text-left' : 'text-center' }} text-white py-1 px-3 product-{{ $fieldName }}">{{ $article[$fieldName] }}</td>
-                        @endforeach
-                        <td class="text-center text-white py-1 px-3">
-
-                        </td>
-                    </tr>
-                @endforeach
-            </table>
-{{--            </div>--}}
+            <div class="big-table-container">
+                <table class="articles-table min-w-full table-auto border border-gray-300">
+                    <thead class="bg-gray-600">
+                        <tr>
+                            @foreach($productFields as $ka => $fieldName)
+                                <th class="p-1 text-gray-400 {{ $ka == 1 ? 'text-left' : 'text-center' }} product-{{ $fieldName }}">{{ trans('product.'.$fieldName) }}</th>
+                                <script>window.productFields.push("{{ $fieldName }}");</script>
+                            @endforeach
+                            <th class="p-1 text-gray-400">
+                                <img class="size-4 mx-auto" src="{{ asset('/storage/images/basket_icon.svg') }}" />
+                            </th>
+                        </tr>
+                    </thead>
+                    @foreach($product->activeArticles as $ka => $article)
+                        <tr class="article_{{ $article->id.($ka %2 ? ' bg-gray-800' : '') }}">
+                            @foreach($productFields as $kf => $fieldName)
+                                <td class="{{ $kf == 1 ? 'text-left' : 'text-center' }} text-white py-1 px-3 product-{{ $fieldName }}">{{ $article[$fieldName] }}</td>
+                            @endforeach
+                            <td class="text-center text-white py-1 px-3 py-2">
+                                @include('partials.form.input-form',[
+                                    'name' => 'article_'.$article->id,
+                                    'class' => 'w-20 text-center',
+                                    'type' => 'number',
+                                    'min' => 0,
+                                    'max' => 100,
+                                    'value' => 0
+                                ])
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
         @endif
     </div>
 </x-app-layout>

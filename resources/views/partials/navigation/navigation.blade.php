@@ -2,7 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-2 sm:px-0">
         <div class="flex justify-between h-10">
-            <div class="w-full flex justify-center">
+            <div class="w-full flex justify-between">
                 <!-- Logo -->
 {{--                <div class="flex md:flex sm:hidden items-center mr-1 lg:mr-3 shrink-0">--}}
 {{--                    <a class="hover:opacity-50" href="{{ route('home') }}">--}}
@@ -28,10 +28,13 @@
                         </div>
                     @endforeach
                 </div>
+                <div id="basket" class="pt-2 px-2 cursor-pointer hover:opacity-50">
+                    <img class="size-6" src="{{ asset('/storage/images/basket_icon.svg') }}" />
+                </div>
             </div>
 
             <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
+            <div class="flex items-center sm:hidden">
                 <button id="hamburger" class="inline-flex items-center justify-center p-2 rounded-md text-neutral-500 hover:text-neutral-400 focus:outline-none focus:bg-neutral-900 focus:text-neutral-400 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />

@@ -62,7 +62,7 @@
     {{ $main_nav }}
     <!-- Page Heading -->
     <header class="bg-neutral-800 shadow border-b border-neutral-600">
-        <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto py-2 px-4 lg:px-2">
             {{ $breadcrumbs }}
         </div>
     </header>
@@ -88,24 +88,6 @@
 </footer>
 
 <img id="on_top_button" class="hover:opacity-50" src="{{ asset('storage/images/ontop_icon.svg') }}" />
-
-<x-modal id="request-order">
-    <form id="order-form" method="POST" action="{{ route('api.message') }}">
-        @csrf
-        <div class="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <h2 class="text-xl font-semibold text-white mb-5">{{ __('Submit a production request') }}</h2>
-            @include('partials.form.input-form',['name' => 'name', 'placeholder' => __('User name')])
-            @include('partials.form.input-form',['name' => 'email', 'placeholder' => 'E-mail'])
-            @include('partials.form.input-form',['name' => 'phone', 'placeholder' => '+7(___)___-__-__'])
-            <textarea name="text" minlength="3" maxlength="300" class="w-full bg-gray-600 text-white px-3 py-1 rounded-md" placeholder="{{ __('Your message') }}"></textarea>
-            @include('partials.form.input-form-error', ['name' => 'text'])
-        </div>
-        <div class="bg-gray-700/25 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-            <button type="submit" command="close" commandfor="request-order" class="inline-flex w-full justify-center rounded-md bg-green border-2 border-solid border-green-800 hover:border-yellow-400 focus:border-yellow-400 text-neutral-300 hover:text-yellow-400 focus:text-yellow-400 px-3 py-2 text-sm font-semibold text-white hover:bg-red-400 sm:ml-3 sm:w-auto">{{ __('Send') }}</button>
-            <button type="button" command="close" commandfor="request-order" class="mt-3 inline-flex w-full justify-center rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-white inset-ring inset-ring-white/5 hover:bg-white/20 sm:mt-0 sm:w-auto">{{ __('Cancel') }}</button>
-        </div>
-    </form>
-</x-modal>
 
 <x-modal id="success-message">
     <div class="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
