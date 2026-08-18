@@ -281,13 +281,11 @@ const bindArticlesBasketCounterChange = () => {
     });
 
     articlesInputs.change(function (event) {
-        if ($(this).is(':focus')) {
-            let name = $(this).attr('name'),
-                id = parseInt(name.replace('article_','')),
-                value = parseInt($(this).val());
+        let name = $(this).attr('name'),
+            id = parseInt(name.replace('article_','')),
+            value = parseInt($(this).val());
 
-            basketCounterApi(event, name, id, value);
-        }
+        basketCounterApi(event, name, id, value);
     });
 }
 
