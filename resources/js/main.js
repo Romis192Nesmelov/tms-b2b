@@ -1,4 +1,14 @@
 $(document).ready(function() {
+    window.token = $('input[name=_token]').val();
+
+    $('#basket-icon').click(function () {
+        openModal('basket-modal');
+    });
+
+    // Changing products counters
+    bindArticlesBasketCounterChange();
+
+    // Submit any forms
     $('button[type=submit]').click(function(e) {
         e.preventDefault();
 
@@ -31,6 +41,12 @@ $(document).ready(function() {
                     closeModal(modalId);
                     unlockAll(form);
                     removeLoader();
+
+                    if (data.empty_basket) {
+                        $('input[type=number]').val(0);
+                        initOrEmptyBacketCounter(0);
+                    }
+
                     openAnswerModal(data.answer);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -53,9 +69,7 @@ $(document).ready(function() {
     });
 
     // Init big table hor-scroll
-    setTimeout(function () {
-        bigTablesScroll();
-    },1000);
+    bigTablesScroll();
 
     // Removing empty cells
     let articlesTable = $('table.articles-table');
@@ -250,6 +264,83 @@ const bigTablesScroll = () => {
     } else if (bigTable) {
         bigTable.mCustomScrollbar('destroy');
     }
+}
+
+const bindArticlesBasketCounterChange = () => {
+    let articlesInputs = $('input[type=number].article');
+    articlesInputs.unbind('change');
+    let basketArticlesTable = $('#basket-modal table.order-table');
+
+    articlesInputs.change(function (e) {
+        if ($(this).is(':focus')) {
+            let name = $(this).attr('name'),
+                id = parseInt(name.replace('article_','')),
+                value = parseInt($(this).val());
+
+            $.post('/api/basket', {
+                '_token': window.token,
+                'id': id,
+                'value': value
+            }, function (data) {
+                if (data.success) {
+                    $('input[type=number][name='+name+']').val(value);
+                    initOrEmptyBacketCounter(data.counter);
+
+                    if (data.action == 'add') {
+                        let cellsClass = 'text-white p-1';
+                        basketArticlesTable.append(
+                            $('<tr></tr>').addClass('article_' + data.id)
+                                .append(
+                                    $('<td></td>').addClass('text-center ' + cellsClass).html(data.article)
+                                )
+                                .append(
+                                    $('<td></td>').addClass('text-left ' + cellsClass).html(data.name)
+                                )
+                                .append(
+                                    $('<td></td>').addClass('text-center text-white p-2').append(
+                                        $('<input />').addClass('article w-20 text-center bg-gray-600 text-white px-3 py-1 rounded-md').attr({
+                                            'name': 'article_' + data.id,
+                                            'type': 'number',
+                                            'min': 0,
+                                            'max': 100,
+                                            'value': data.value
+                                        })
+                                    )
+                                )
+                        );
+                        bindArticlesBasketCounterChange();
+                    } else if (data.action == 'remove') {
+                        basketArticlesTable.find('tr.article_' + data.id).remove();
+                    }
+
+                } else e.preventDefault();
+            });
+        }
+    });
+}
+
+const initOrEmptyBacketCounter = (counter) => {
+    let basketOrderForm = $('#basket-modal form'),
+        basketSubmitButton = basketOrderForm.find('button[type=submit]'),
+        basketCounter = $('#basket-counter'),
+        basketArticlesTable = basketOrderForm.find('.big-table-container'),
+        basketUserFiledsBlock = basketOrderForm.find('.user-fields-block'),
+        emptyBasketHead = basketOrderForm.find('h2');
+
+    if (counter) {
+        basketCounter.removeClass('hidden').addClass('flex');
+        basketSubmitButton.removeClass('hidden');
+        basketArticlesTable.removeClass('hidden');
+        basketUserFiledsBlock.removeClass('hidden');
+        emptyBasketHead.addClass('hidden');
+    } else {
+        basketCounter.removeClass('flex').addClass('hidden');
+        basketSubmitButton.addClass('hidden');
+        basketArticlesTable.addClass('hidden');
+        basketUserFiledsBlock.addClass('hidden');
+        emptyBasketHead.removeClass('hidden');
+    }
+    basketCounter.html(counter);
 }
 
 // const getQueryParams = (qs) => {

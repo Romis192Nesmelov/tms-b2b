@@ -28,7 +28,10 @@
                         </div>
                     @endforeach
                 </div>
-                <div id="basket" class="pt-2 px-2 cursor-pointer hover:opacity-50">
+                <div id="basket-icon" class="pt-2 px-2 cursor-pointer hover:opacity-50">
+                    <div id="basket-counter" class="{{ !count(session('basket', [])) ? 'hidden' : 'flex' }}">
+                        {{ count(session('basket',[])) }}
+                    </div>
                     <img class="size-6" src="{{ asset('/storage/images/basket_icon.svg') }}" />
                 </div>
             </div>

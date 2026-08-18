@@ -11,4 +11,6 @@ Route::get('/catalogue/{slug?}',ProductController::class)->name('catalogue');
 
 Route::prefix('api')->name('api.')->group(function () {
     Route::post('message', [OrderController::class, 'message'])->name('message');
+    Route::post('basket', [OrderController::class, 'basket'])->name('basket');
+    Route::post('make-an-order', [OrderController::class, 'makeAnOrder'])->name('make-an-order');
 });

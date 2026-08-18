@@ -28,27 +28,29 @@
                     <thead class="bg-gray-600">
                         <tr>
                             @foreach($productFields as $ka => $fieldName)
-                                <th class="p-1 text-gray-400 {{ $ka == 1 ? 'text-left' : 'text-center' }} product-{{ $fieldName }}">{{ trans('product.'.$fieldName) }}</th>
+                                @include('partials.form.articles-table-head',['fieldName' => $fieldName, 'key' => $ka])
                                 <script>window.productFields.push("{{ $fieldName }}");</script>
                             @endforeach
-                            <th class="p-1 text-gray-400">
-                                <img class="size-4 mx-auto" src="{{ asset('/storage/images/basket_icon.svg') }}" />
-                            </th>
+                            @include('partials.form.articles-table-head-basket')
                         </tr>
                     </thead>
                     @foreach($product->activeArticles as $ka => $article)
-                        <tr class="article_{{ $article->id.($ka %2 ? ' bg-gray-800' : '') }}">
+                        <tr class="article_{{ $article->id }}">
                             @foreach($productFields as $kf => $fieldName)
-                                <td class="{{ $kf == 1 ? 'text-left' : 'text-center' }} text-white py-1 px-3 product-{{ $fieldName }}">{{ $article[$fieldName] }}</td>
+                                @include('partials.form.articles-table-cell',[
+                                    'cellVal' => $article[$fieldName],
+                                    'fieldName' => $fieldName,
+                                    'key' => $kf
+                                ])
                             @endforeach
-                            <td class="text-center text-white py-1 px-3 py-2">
+                            <td class="text-center text-white p-2">
                                 @include('partials.form.input-form',[
                                     'name' => 'article_'.$article->id,
-                                    'class' => 'w-20 text-center',
+                                    'class' => 'article w-20 text-center',
                                     'type' => 'number',
                                     'min' => 0,
                                     'max' => 100,
-                                    'value' => 0
+                                    'value' => array_key_exists($article->id, session('basket', [])) ? session('basket', [])[$article->id]['value'] : 0
                                 ])
                             </td>
                         </tr>

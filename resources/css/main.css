@@ -20,6 +20,26 @@ nav .h-full .relative > div > a {
     height: 100%;
 }
 
+.articles-table tr:nth-child(even),
+.order-table tr:nth-child(even){
+    background-color: #0b1a2c;
+}
+
+#basket-counter {
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: darkred;
+    border-radius: 50%;
+    position: absolute;
+    font-weight: bolder;
+    font-size: 11px;
+    color: white;
+    margin-left: 18px;
+    margin-top: -7px;
+}
+
 /*nav .h-full div {*/
 /*    display: flex;*/
 /*    align-items: center;*/
@@ -115,7 +135,7 @@ nav .h-full .relative > div > a {
     /*overflow-x: scroll;*/
 }
 
-.big-table-container table {
+.articles-table {
     width: 100%;
     min-width: 1024px;
 }

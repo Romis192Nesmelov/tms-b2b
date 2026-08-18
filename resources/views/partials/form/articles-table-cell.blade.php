@@ -1,0 +1,1 @@
+<td class="{{ $key == 1 ? 'text-left' : 'text-center' }} text-white p-1 product-{{ $fieldName }}">{{ $cellVal }}</td>

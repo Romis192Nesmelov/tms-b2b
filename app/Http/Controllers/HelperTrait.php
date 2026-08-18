@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 trait HelperTrait
 {
+    public string $validationInteger = 'required|integer';
+    public string $validationNumeric = 'required|numeric';
     public string $validationPhone = 'regex:/^((\+)?(\d)(\s)?(\()?[0-9]{3}(\))?(\s)?([0-9]{3})(\-)?([0-9]{2})(\-)?([0-9]{2}))$/';
     public string $validationString = 'required|min:3|max:191';
     public string $validationShortText = 'required|min:5|max:300';

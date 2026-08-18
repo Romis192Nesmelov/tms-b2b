@@ -36,6 +36,7 @@
     ])
 </head>
 <body class="font-sans antialiased bg-neutral-950">
+@csrf
 
 <div class="bg-green" data-scroll="top">
     <div class="max-w-7xl mx-auto py-5">
@@ -105,6 +106,56 @@
     <div class="bg-gray-700/25 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
         <button type="button" command="close" commandfor="success-message" class="mt-3 inline-flex w-full justify-center rounded-md bg-white/10 px-3 py-2 text-sm font-semibold text-white inset-ring inset-ring-white/5 hover:bg-white/20 sm:mt-0 sm:w-auto">{{ __('Close') }}</button>
     </div>
+</x-modal>
+
+<x-modal id="basket-modal">
+    <form method="POST" action="{{ route('api.make-an-order') }}">
+        @csrf
+        <div class="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <h1 class="w-full text-center text-2xl font-semibold text-white mb-5">{{ __('Your basket') }}</h1>
+            <div class="{{ !count(session('basket', [])) ? 'hidden' : '' }} big-table-container">
+                <table class="order-table w-full table-auto border border-gray-300">
+                    <thead class="bg-gray-600">
+                        <tr>
+                            @foreach(['article','name'] as $ka => $fieldName)
+                                @include('partials.form.articles-table-head',['fieldName' => $fieldName, 'key' => $ka])
+                            @endforeach
+                            @include('partials.form.articles-table-head-basket')
+                        </tr>
+                    </thead>
+                    @foreach(session('basket', []) as $id => $article)
+                        <tr class="article_{{ $id }}">
+                            @foreach(['article','name'] as $kf => $fieldName)
+                                @include('partials.form.articles-table-cell',[
+                                    'cellVal' => $article[$fieldName],
+                                    'fieldName' => $fieldName,
+                                    'key' => $kf
+                                ])
+                            @endforeach
+                            <td class="text-center text-white p-2">
+                                @include('partials.form.input-form',[
+                                    'name' => 'article_'.$id,
+                                    'class' => 'article w-20 text-center',
+                                    'type' => 'number',
+                                    'min' => 0,
+                                    'max' => 100,
+                                    'value' => $article['value']
+                                ])
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+            @include('partials.form.user-fields-block', ['class' => !count(session('basket', [])) ? 'hidden' : ''])
+
+            <h2 class="{{ count(session('basket', [])) ? 'hidden' : '' }} w-full text-center text-xl font-semibold text-gray-700 mt-5">{{ __('Your basket is empty') }}</h2>
+        </div>
+        @include('partials.modal-buttons-pair',[
+            'submitClass' => !count(session('basket', [])) ? 'hidden' : '',
+            'modalId' => 'basket-modal',
+            'submitText' => __('Submit an application')
+        ])
+    </form>
 </x-modal>
 
 </body>

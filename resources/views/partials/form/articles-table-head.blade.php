@@ -1,0 +1,1 @@
+<th class="p-1 text-gray-400 {{ !$key ? 'w-25' : 'w-auto' }} {{ $key == 1 ? 'text-left' : 'text-center' }} product-{{ $fieldName }}">{{ trans('product.'.$fieldName) }}</th>

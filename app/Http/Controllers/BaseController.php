@@ -22,7 +22,7 @@ class BaseController extends Controller
 //                $existingYears[] = $year;
 //            }
 //        }
-
+//        session()->forget('basket');
         $this->mainMenu = [
             [
                 'route' => 'home',

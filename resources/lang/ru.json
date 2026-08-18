@@ -22,6 +22,8 @@
     "Add article": "Добавить артикул",
     "Images": "Картинки",
     "Articles": "Артикулы",
+    "Article": "Артикул",
+    "Count": "Кол-во",
     "Name": "Наименование",
     "Text": "Текст",
     "Description": "Описание",
@@ -39,5 +41,10 @@
     "Message from the site": "Сообщение с сайта",
     "Message": "Сообщение",
     "Order from the site": "Заказ с сайта",
-    "The order has been successfully submitted!": "Заявка успешно отправлена!"
+    "The order has been successfully submitted!": "Заявка успешно отправлена!",
+    "Your basket": "Ваша корзина",
+    "Your basket is empty": "Ваша корзина пуста",
+    "Make an order": "Заказать",
+    "Submit an application": "Оформить заявку",
+    "New order": "Новый заказ с сайта"
 }
