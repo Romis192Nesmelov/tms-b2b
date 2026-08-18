@@ -127,20 +127,23 @@
                         <tr class="article_{{ $id }}">
                             @foreach(['article','name'] as $kf => $fieldName)
                                 @include('partials.form.articles-table-cell',[
+                                    'class' => 'text-sm leading-tight',
                                     'cellVal' => $article[$fieldName],
                                     'fieldName' => $fieldName,
                                     'key' => $kf
                                 ])
                             @endforeach
-                            <td class="text-center text-white p-2">
+                            <td class="text-center text-white w-1/4 py-2">
+                                @include('partials.basket-counter-button', ['plus' => false])
                                 @include('partials.form.input-form',[
                                     'name' => 'article_'.$id,
-                                    'class' => 'article w-20 text-center',
+                                    'class' => 'article w-15 text-center',
                                     'type' => 'number',
                                     'min' => 0,
                                     'max' => 100,
                                     'value' => $article['value']
                                 ])
+                                @include('partials.basket-counter-button', ['plus' => true])
                             </td>
                         </tr>
                     @endforeach

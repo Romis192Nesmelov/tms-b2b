@@ -40,6 +40,22 @@ nav .h-full .relative > div > a {
     margin-top: -7px;
 }
 
+.basket-counter {
+    padding: 4px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    background-color: #1a202c;
+    border: 1px solid gray;
+    font-weight: bolder;
+}
+
+.basket-counter:hover {
+    background-color: #2b3b4e;
+}
+
 /*nav .h-full div {*/
 /*    display: flex;*/
 /*    align-items: center;*/

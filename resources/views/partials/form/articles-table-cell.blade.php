@@ -1,1 +1,1 @@
-<td class="{{ $key == 1 ? 'text-left' : 'text-center' }} text-white p-1 product-{{ $fieldName }}">{{ $cellVal }}</td>
+<td class="{{ isset($class) ? $class : '' }} {{ $key == 1 ? 'text-left' : 'text-center' }} text-white p-1 product-{{ $fieldName }}">{{ $cellVal }}</td>

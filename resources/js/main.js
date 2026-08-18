@@ -41,12 +41,10 @@ $(document).ready(function() {
                     closeModal(modalId);
                     unlockAll(form);
                     removeLoader();
-
                     if (data.empty_basket) {
                         $('input[type=number]').val(0);
                         initOrEmptyBacketCounter(0);
                     }
-
                     openAnswerModal(data.answer);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -267,54 +265,28 @@ const bigTablesScroll = () => {
 }
 
 const bindArticlesBasketCounterChange = () => {
-    let articlesInputs = $('input[type=number].article');
-    articlesInputs.unbind('change');
-    let basketArticlesTable = $('#basket-modal table.order-table');
+    let articlesInputs = $('input[type=number].article'),
+        basketCounterButtons = $('button.basket-counter');
 
-    articlesInputs.change(function (e) {
+    articlesInputs.unbind('change');
+    basketCounterButtons.unbind('click');
+
+    basketCounterButtons.click(function (event) {
+        let counterInput = $(this).siblings('input'),
+            name = counterInput.attr('name'),
+            id = parseInt(counterInput.attr('name').replace('article_','')),
+            value = parseInt(counterInput.val()) + ($(this).hasClass('plus') ? 1 : -1);
+
+        basketCounterApi(event, name, id, value);
+    });
+
+    articlesInputs.change(function (event) {
         if ($(this).is(':focus')) {
             let name = $(this).attr('name'),
                 id = parseInt(name.replace('article_','')),
                 value = parseInt($(this).val());
 
-            $.post('/api/basket', {
-                '_token': window.token,
-                'id': id,
-                'value': value
-            }, function (data) {
-                if (data.success) {
-                    $('input[type=number][name='+name+']').val(value);
-                    initOrEmptyBacketCounter(data.counter);
-
-                    if (data.action == 'add') {
-                        let cellsClass = 'text-white p-1';
-                        basketArticlesTable.append(
-                            $('<tr></tr>').addClass('article_' + data.id)
-                                .append(
-                                    $('<td></td>').addClass('text-center ' + cellsClass).html(data.article)
-                                )
-                                .append(
-                                    $('<td></td>').addClass('text-left ' + cellsClass).html(data.name)
-                                )
-                                .append(
-                                    $('<td></td>').addClass('text-center text-white p-2').append(
-                                        $('<input />').addClass('article w-20 text-center bg-gray-600 text-white px-3 py-1 rounded-md').attr({
-                                            'name': 'article_' + data.id,
-                                            'type': 'number',
-                                            'min': 0,
-                                            'max': 100,
-                                            'value': data.value
-                                        })
-                                    )
-                                )
-                        );
-                        bindArticlesBasketCounterChange();
-                    } else if (data.action == 'remove') {
-                        basketArticlesTable.find('tr.article_' + data.id).remove();
-                    }
-
-                } else e.preventDefault();
-            });
+            basketCounterApi(event, name, id, value);
         }
     });
 }
@@ -341,6 +313,56 @@ const initOrEmptyBacketCounter = (counter) => {
         emptyBasketHead.removeClass('hidden');
     }
     basketCounter.html(counter);
+}
+
+const basketCounterApi = (event, name, id, value) => {
+    let basketArticlesTable = $('#basket-modal table.order-table');
+
+    $.post('/api/basket', {
+        '_token': window.token,
+        'id': id,
+        'value': value
+    }, function (data) {
+        if (data.success) {
+            $('input[type=number][name='+name+']').val(data.value);
+            initOrEmptyBacketCounter(data.counter);
+
+            if (data.action == 'add') {
+                let cellsClass = 'text-white p-1';
+                basketArticlesTable.append(
+                    $('<tr></tr>').addClass('article_' + data.id)
+                        .append(
+                            $('<td></td>').addClass('text-center ' + cellsClass).html(data.article)
+                        )
+                        .append(
+                            $('<td></td>').addClass('text-sm leading-tight text-left ' + cellsClass).html(data.name)
+                        )
+                        .append(
+                            $('<td></td>').addClass('text-center text-white w-1/4 py-2')
+                                .append(
+                                    $('<button></button>').attr('type','button').addClass('basket-counter minus').html('–')
+                                )
+                                .append(
+                                    $('<input />').addClass('article w-15 text-center bg-gray-600 text-white px-3 py-1 rounded-md mx-1').attr({
+                                        'name': 'article_' + data.id,
+                                        'type': 'number',
+                                        'min': 0,
+                                        'max': 100,
+                                        'value': data.value
+                                    })
+                                )
+                                .append(
+                                    $('<button></button>').attr('type','button').addClass('basket-counter plus').html('+')
+                                )
+                        )
+                );
+                bindArticlesBasketCounterChange();
+            } else if (data.action == 'remove') {
+                basketArticlesTable.find('tr.article_' + data.id).remove();
+            }
+
+        } else event.preventDefault();
+    });
 }
 
 // const getQueryParams = (qs) => {

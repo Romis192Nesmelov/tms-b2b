@@ -1,0 +1,1 @@
+<button type="button" class="basket-counter {{ $plus ? 'plus' : 'minus' }}">{{ $plus ? '+' : '–' }}</button>

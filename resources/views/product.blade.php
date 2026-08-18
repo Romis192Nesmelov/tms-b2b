@@ -44,14 +44,16 @@
                                 ])
                             @endforeach
                             <td class="text-center text-white p-2">
+                                @include('partials.basket-counter-button', ['plus' => false])
                                 @include('partials.form.input-form',[
                                     'name' => 'article_'.$article->id,
-                                    'class' => 'article w-20 text-center',
+                                    'class' => 'article w-15 text-center border border-gray-500',
                                     'type' => 'number',
                                     'min' => 0,
                                     'max' => 100,
                                     'value' => array_key_exists($article->id, session('basket', [])) ? session('basket', [])[$article->id]['value'] : 0
                                 ])
+                                @include('partials.basket-counter-button', ['plus' => true])
                             </td>
                         </tr>
                     @endforeach
