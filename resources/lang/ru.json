@@ -5,6 +5,7 @@
     "About company": "О компании",
     "Active": "Активно",
     "Catalogue": "Каталог",
+    "Product": "Продукт",
     "Products": "Продукты",
     "Advantages": "Преимущества",
     "News": "Новости",
@@ -38,13 +39,19 @@
     "User name": "Имя пользователя",
     "Phone": "Телефон",
     "Your message": "Ваше сообщение",
+    "User message": "Сообщение от пользователя",
     "Message from the site": "Сообщение с сайта",
     "Message": "Сообщение",
+    "Orders": "Заказы",
     "Order from the site": "Заказ с сайта",
     "The order has been successfully submitted!": "Заявка успешно отправлена!",
     "Your basket": "Ваша корзина",
     "Your basket is empty": "Ваша корзина пуста",
     "Make an order": "Заказать",
     "Submit an application": "Оформить заявку",
-    "New order": "Новый заказ с сайта"
+    "New order": "Новый заказ с сайта",
+    "Found by request:": "Найдено по запросу:",
+    "Go over": "Перейти",
+    "Order is over": "Заказ выполнен",
+    "Date of creation": "Дата создания"
 }

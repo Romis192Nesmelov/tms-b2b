@@ -5,6 +5,12 @@ $(document).ready(function() {
         openModal('basket-modal');
     });
 
+    // Submit search form
+    let searchForm = $('#search-form');
+    searchForm.find('img').click(function () {
+        searchForm.submit();
+    });
+
     // Changing products counters
     bindArticlesBasketCounterChange();
 
@@ -66,9 +72,6 @@ $(document).ready(function() {
         // $(window).scrollTop(0);
     });
 
-    // Init big table hor-scroll
-    bigTablesScroll();
-
     // Removing empty cells
     let articlesTable = $('table.articles-table');
     if (articlesTable.length) {
@@ -84,8 +87,15 @@ $(document).ready(function() {
         });
     }
 
+    // Init big table hor-scroll
+    bigTablesScroll();
+
+    // Fit screen
+    fitScreenHeight();
+
     $(window).resize(function() {
         bigTablesScroll();
+        fitScreenHeight();
     });
 
     $('#hamburger').click(function () {
@@ -180,6 +190,23 @@ $(document).ready(function() {
         else onTopButton.fadeOut();
     });
 });
+
+const fitScreenHeight = () => {
+    let middlePart = $('#middle-part');
+
+    if (middlePart.length) {
+        let middlePartHeight = parseInt($('#middle-part').height()),
+            topPartHeight = parseInt($('#window-topper').height()),
+            footer = $('footer'),
+            footerHeight = parseInt(footer.height() + parseInt(footer.css('padding-top')) + parseInt(footer.css('padding-bottom')));
+
+        if (window.innerHeight > (middlePartHeight+topPartHeight+footerHeight)) {
+            footer.addClass('absolute').addClass('bottom-0');
+        } else {
+            footer.removeClass('absolute').removeClass('bottom-0');
+        }
+    }
+}
 
 const goToScroll = (scrollData) => {
     $('html,body').animate({
@@ -325,7 +352,7 @@ const basketCounterApi = (event, name, id, value) => {
             $('input[type=number][name='+name+']').val(data.value);
             initOrEmptyBacketCounter(data.counter);
 
-            if (data.action == 'add') {
+            if (data.action === 'add') {
                 let cellsClass = 'text-white p-1';
                 basketArticlesTable.append(
                     $('<tr></tr>').addClass('article_' + data.id)
@@ -355,10 +382,9 @@ const basketCounterApi = (event, name, id, value) => {
                         )
                 );
                 bindArticlesBasketCounterChange();
-            } else if (data.action == 'remove') {
+            } else if (data.action === 'remove') {
                 basketArticlesTable.find('tr.article_' + data.id).remove();
             }
-
         } else event.preventDefault();
     });
 }

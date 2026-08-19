@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\ArticleOrder;
+use App\Models\Order;
 use App\Http\Requests\{BasketRequest, MessageRequest, OrderRequest};
 use App\Jobs\SendMessage;
 use \Illuminate\Http\JsonResponse;
 use App\Models\Article;
-use App\Models\Order;
 
 class OrderController extends BaseController
 {
@@ -14,6 +15,7 @@ class OrderController extends BaseController
      */
     public function message(MessageRequest $request): JsonResponse
     {
+//        Order::query()->create($request->all());
         dispatch(new SendMessage('message', $request->all()));
         return response()->json([
             'success' => true,
@@ -57,6 +59,14 @@ class OrderController extends BaseController
      */
     public function makeAnOrder(OrderRequest $request): JsonResponse
     {
+//        $order = Order::query()->create($request->all());
+//        foreach (array_keys($request->session()->get('basket')) as $id) {
+//            ArticleOrder::query()->create([
+//                'article_id' => $id,
+//                'order_id' => $order->id
+//            ]);
+//        }
+
         dispatch(new SendMessage('order', $request->all()));
         $request->session()->forget('basket');
         return response()->json([

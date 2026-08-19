@@ -18,6 +18,7 @@ use App\MoonShine\Resources\News\NewsResource;
 use App\MoonShine\Resources\Slide\SlideResource;
 use App\MoonShine\Resources\Image\ImageResource;
 use App\MoonShine\Resources\Article\ArticleResource;
+use App\MoonShine\Resources\Order\OrderResource;
 
 final class MoonShineLayout extends AppLayout
 {
@@ -46,6 +47,7 @@ final class MoonShineLayout extends AppLayout
                 MenuItem::make(ArticleResource::class, __('Articles')),
             ]),
 //            MenuItem::make(NewsResource::class, __('News')),
+//            MenuItem::make(OrderResource::class, __('Orders')),
         ];
     }
 

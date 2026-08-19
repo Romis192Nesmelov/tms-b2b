@@ -6,6 +6,14 @@ ul {
     list-style-type: disc !important;
 }
 
+a.link {
+    color: #005949;
+}
+
+a.link:hover {
+    color: #003726;
+}
+
 .bg-green-middle {
     background-color: #004733;
 }
@@ -23,6 +31,18 @@ nav .h-full .relative > div > a {
 .articles-table tr:nth-child(even),
 .order-table tr:nth-child(even){
     background-color: #0b1a2c;
+}
+
+#search-form img {
+    cursor: pointer;
+}
+
+#search-form img:hover {
+    opacity: 0.5;
+}
+
+span.marked {
+    background-color: #008152;
 }
 
 #basket-counter {

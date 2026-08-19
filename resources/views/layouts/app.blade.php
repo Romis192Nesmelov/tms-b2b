@@ -38,36 +38,38 @@
 <body class="font-sans antialiased bg-neutral-950">
 @csrf
 
-<div class="bg-green" data-scroll="top">
-    <div class="max-w-7xl mx-auto py-5">
-        <div class="flex flex-col md:flex-row items-center justify-between">
-            <div class="flex flex-col md:flex-row items-start justify-start">
-                <a class="hover:opacity-50" href="{{ route('home') }}">
-                    <img class="w-50 ml-0 mr-0 md:ml-4 md:mr-2 mt-3 md:mt-0" src="{{ asset('storage/images/logo.svg') }}"/>
-                </a>
-                <p class="text-center md:text-left text-2xl leading-6 text-white font-semibold px-2 pt-3 md:pt-0">{{ trans('content.production_of') }}<br>{{ trans('content.the_mounting') }}<br>{{ trans('content.profile') }}</p>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 md:gap-4 px-6 py-5 md:py-0">
-                @include('partials.contacts.contacts')
-            </div>
-            <div class="px-2">
-                <form>
-                    <x-text-input id="search" icon="search_icon.svg" placeholder="{{ __('Search') }}"></x-text-input>
-                </form>
+<div id="window-topper">
+    <div class="bg-green" data-scroll="top">
+        <div class="max-w-7xl mx-auto py-5">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex flex-col md:flex-row items-start justify-start">
+                    <a class="hover:opacity-50" href="{{ route('home') }}">
+                        <img class="w-50 ml-0 mr-0 md:ml-4 md:mr-2 mt-3 md:mt-0" src="{{ asset('storage/images/logo.svg') }}"/>
+                    </a>
+                    <p class="text-center md:text-left text-2xl leading-6 text-white font-semibold px-2 pt-3 md:pt-0">{{ trans('content.production_of') }}<br>{{ trans('content.the_mounting') }}<br>{{ trans('content.profile') }}</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 md:gap-4 px-6 py-5 md:py-0">
+                    @include('partials.contacts.contacts')
+                </div>
+                <div class="px-2">
+{{--                    <form id="search-form" method="GET" action="{{ route('search') }}">--}}
+                        <x-text-input id="search" name="search" icon="search_icon.svg" placeholder="{{ __('Search') }}"></x-text-input>
+{{--                    </form>--}}
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="bg-green-middle">
-    {{ $main_nav }}
-    <!-- Page Heading -->
-    <header class="bg-neutral-800 shadow border-b border-neutral-600">
-        <div class="max-w-7xl mx-auto py-2 px-4 lg:px-2">
-            {{ $breadcrumbs }}
-        </div>
-    </header>
-    <!-- /Page Heading -->
+    <div class="bg-green-middle">
+        {{ $main_nav }}
+        <!-- Page Heading -->
+        <header class="bg-neutral-800 shadow border-b border-neutral-600">
+            <div class="max-w-7xl mx-auto py-2 px-4 lg:px-2">
+                {{ $breadcrumbs }}
+            </div>
+        </header>
+        <!-- /Page Heading -->
+    </div>
 </div>
 <!-- Page Content -->
 <main>
@@ -75,7 +77,7 @@
 </main>
 <!-- /Page Content -->
 
-<footer class="py-8 bg-neutral-800 border-t border-neutral-600">
+<footer class="w-full py-8 bg-neutral-800 border-t border-neutral-600">
     <div class="max-w-7xl mx-auto text-white flex flex-col md:flex-row items-center justify-between">
         <div>{{ $footer_menu }}</div>
         <div class="grid grid-cols-1 gap-3">
