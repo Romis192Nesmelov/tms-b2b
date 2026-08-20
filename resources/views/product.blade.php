@@ -17,7 +17,7 @@
                     </div>
                 @endif
             </div>
-            <div class="w-full md:w-[60%] pl-7 md:pl-15 text-left text-white">
+            <div class="w-full md:w-[60%] pl-7 md:pl-15 mb-4 md:mb-0 text-left text-white">
                 <h2 class="w-full text-left text-2xl text-neutral-600 font-semibold mt-4 md:mt-0 mb-4">{{ __('Properties and advantages') }}</h2>
                 {!! $product->description !!}
             </div>
